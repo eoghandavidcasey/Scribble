@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title</strong>
+  <%= @post.title %>
+</p>
+
+<p>
+  <strong>Link:</strong>
+  <%= @post.link %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @post.description %>
+</p>
+
+
+<% if @post.comments.empty? %>
+ <h3>You are the first to comment </h3>
+<% else %>
+
+	<h2>What others thought of this: </h2>
+	<% @post.comments.reverse.each do |comment| %>
+	<p><%= comment.content %>
+		Posted <%= time_ago_in_words(comments.created_at) %> ago by
+		<%= comment.user.name %></p>
+	<% end %>
+
+	<h3> Other Ratings </h3>
+	<p>
+			<%= number_with_precision( @post.average_ratings, precision: 0) %>
+	</p>
+<% end %>
+
+
+
+
+
+<%= link_to 'Edit', edit_post_path(@post) %> |
+<%= link_to 'Back', posts_path %>

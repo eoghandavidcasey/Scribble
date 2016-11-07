@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Home Pages</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Post</th>
+      <th>Title</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @home_pages.each do |home_page| %>
+      <tr>
+        <td><%= home_page.post_id %></td>
+        <td><%= home_page.title %></td>
+        <td><%= home_page.user_id %></td>
+        <td><%= link_to 'Show', home_page %></td>
+        <td><%= link_to 'Edit', edit_home_page_path(home_page) %></td>
+        <td><%= link_to 'Destroy', home_page, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Home page', new_home_page_path %>

@@ -1,0 +1,48 @@
+<%= form_for(@post) do |f| %>
+  <% if @post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <%= f.collection_select :user_id, User.all, :id, :name %>
+
+      <ul>
+      <% @post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <h2>Rating and Comment:</h2>
+  <%= form_for([@post, Comment.new]) do |f| %>
+
+  <h3><%= f.label :ratings %>
+    <% ratings = [1, 2, 3, 4, 5] %>
+    <% ratings.each do |rating| %>
+        <%= f.radio_button :ratings, rating %><%= rating %>
+      <% end %>
+
+    </h3></br>
+      <% = f.text_area :content, :rows => 4, :cols => 40 %>
+      <div class = "actions">
+      <%= f.submit "Post a comment"%>
+      </div>
+    <% end %>
+
+  
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :link %><br>
+    <%= f.text_field :link %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

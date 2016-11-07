@@ -4,9 +4,38 @@
   <title>Scribble</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag('application', :media => 'all') %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+
+	<div id = "banner">
+		<%= image_tag("Pictures/scribble.jpg", width: '600px') %>
+	</div>
+
+		<div id = "banner">
+		<%= "Welcome to Scribble" %>
+	</div>
+
+	<div id = "nav">
+		<ul>
+			<% if !signed_in? %>
+				<li><%= link_to "Sign in", login_path %></li>
+			<% else %>
+				<li>Signed in as <%= @current_user.name %></li>
+				<li><%= link_to "Sign out", logout_path%></li>
+			<% end %>
+
+
+			<li><%= link_to "Home", home_pages_path %></li>
+			<li><%= link_to "User Profile", users_path %></li>
+			<li><%= link_to "New Post", posts_path %></li>
+			<li><%= mail_to "ecasey8@icloud.com", "Contact us" %></li>
+			<p> New User? <%= link_to "Sign up now!", new_user_path%></p>
+
+			
+			
+		</ul>
 
 <%= yield %>
 

@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Post:</strong>
+  <%= @home_page.post_id %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @home_page.title %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @home_page.user_id %>
+</p>
+
+<%= link_to 'Edit', edit_home_page_path(@home_page) %> |
+<%= link_to 'Back', home_pages_path %>
